@@ -17,7 +17,7 @@ spec = Gem::Specification.new do |s|
   s.summary = "Provides easy configuration and management of Merb applications, including multiple servers and different adapters"
   s.files = FileList["{bin,config,resources}/**/*"].to_a
   s.executables << "merb-manage-ctl"
-  s.add_dependency("merb", ">= 0.9.2")
+  # s.add_dependency("merb", ">= 0.9.2") # mj: don't want to pull dependencies when installing on server, as merb is always frozen in apps
 end
 
 # Setup the package task
