@@ -35,9 +35,12 @@ def start(yml)
   command += "-G #{yml['group']} " unless yml["group"].nil?
   command += "-a #{yml['adapter']} " unless yml["adapter"].nil?
   command += "-e #{yml['environment']} " unless yml["environment"].nil?
+  command += "-h #{yml['address']} " unless yml["address"].nil?
+  command += "-n #{yml['name']} " unless yml["name"].nil?
   command += "-c #{yml['servers']} " unless yml["servers"].nil?
   command += "-d " if yml["servers"].nil?
   command += "-p #{yml['port']} " unless yml["port"].nil?
+  command += "-P #{yml['pid_file']} " unless yml["pid_file"].nil?
   command += "-l #{yml['logging']} " unless yml["logging"].nil?
   command = "su #{yml['user']} -c \"#{command}\"" unless yml["user"].nil?
   `#{command}`
