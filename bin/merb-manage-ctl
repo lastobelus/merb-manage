@@ -73,6 +73,9 @@ case ARGV[0]
     each_config(configuration_pattern) do |yml|
       stop(yml)
     end
+  when "status"
+    # TODO
+    puts "not yet implemented"
 else
   # Print out the usage as the arguments didn't match a known action
   puts "Usage: merb-manage-ctl {start|stop|restart} (-c CONFIG_GLOB)"
