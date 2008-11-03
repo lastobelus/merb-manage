@@ -30,7 +30,7 @@ end
 
 # This starts the server as per the specified yml config
 def start(yml)
-  command = "merb -m #{yml['path']} "
+  command = "#{merb_command(yml)} -m #{yml['path']} "
   command += "-u #{yml['user']} " unless yml["user"].nil?
   command += "-G #{yml['group']} " unless yml["group"].nil?
   command += "-a #{yml['adapter']} " unless yml["adapter"].nil?
@@ -46,9 +46,19 @@ def start(yml)
   `#{command}`
 end
 
+def merb_command(yml)
+  command = ""
+  command += "#{yml['path']}/bin/" unless yml_false(yml, 'frozen')
+  command += "merb"
+end
+
+def yml_false(yml, key)
+  yml[key].nil? || yml[key] == '0' || yml[key].downcase == 'false'
+end
+
 # This stops the server as per the specified yml config
 def stop(yml)
-  `merb -m #{yml["path"]} -k all`
+  `#{merb_command(yml)} -m #{yml["path"]} -k all`
 end
 
 # See if there is a -c argument
