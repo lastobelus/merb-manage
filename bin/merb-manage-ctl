@@ -11,7 +11,7 @@ configuration_pattern = "/etc/merb-manage/*.yml"
 
 # This iterates through each config found in the configuration directory, executing the specified block for each
 def each_config(config, &block)
-  File.join(config, '*.yml') if File.directory? config
+  config = File.join(config, '*.yml') if File.directory? config
   begin
     Dir.glob(config) do |yml|
       begin
