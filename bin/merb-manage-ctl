@@ -54,7 +54,7 @@ def merb_command(yml)
 end
 
 def yml_false(yml, key)
-  yml[key].nil? || yml[key] == '0' || yml[key].downcase == 'false'
+  !yml[key] || yml[key] == '0' || (yml[key].is_a?(String) && (yml[key].downcase == 'false'))
 end
 
 # This stops the server as per the specified yml config
