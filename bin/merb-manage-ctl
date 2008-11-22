@@ -44,6 +44,7 @@ def start(yml)
   command += "-P #{yml['pid_file']} " unless yml["pid_file"].nil?
   command += "-l #{yml['logging']} " unless yml["logging"].nil?
   command = "su #{yml['user']} -c \"#{command}\"" unless yml["user"].nil?
+  puts command
   `#{command}`
 end
 
@@ -59,7 +60,9 @@ end
 
 # This stops the server as per the specified yml config
 def stop(yml)
-  `#{merb_command(yml)} -m #{yml["path"]} -k all`
+  command = "#{merb_command(yml)} -m #{yml["path"]} -K all`"
+  puts command
+  `#{command}`
 end
 
 # See if there is a -c argument
