@@ -60,7 +60,7 @@ end
 
 # This stops the server as per the specified yml config
 def stop(yml)
-  command = "#{merb_command(yml)} -m #{yml["path"]} -K all`"
+  command = "#{merb_command(yml)} -m #{yml["path"]} -K all"
   puts command
   `#{command}`
 end
