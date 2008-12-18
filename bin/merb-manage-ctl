@@ -50,7 +50,7 @@ end
 
 def merb_command(yml)
   command = ""
-  command += "#{yml['path']}/bin/" unless yml_false(yml, 'frozen')
+  command += "cd #{yml['path']} && bin/" unless yml_false(yml, 'frozen')
   command += "merb"
 end
 
